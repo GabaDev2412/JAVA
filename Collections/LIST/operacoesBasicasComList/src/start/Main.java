@@ -1,8 +1,8 @@
 package start;
 
+import utilidade.CarrinhoDeCompras;
 import utilidade.ListaTarefa;
 
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -26,6 +26,8 @@ public class Main {
                     break;
                 }
                 case 2:
+                    carrinhoDeCompras();
+                    break;
             }
 
         }while (escolha!= 0);
@@ -65,6 +67,50 @@ public class Main {
 
                 case 4:
                     listaTarefa.obterDescricoesTarefas();
+                    break;
+            }
+        }while (escolha != 0);
+    }
+
+    private static void carrinhoDeCompras(){
+        CarrinhoDeCompras carrinhoDeCompras = new CarrinhoDeCompras();
+        int escolha;
+        do {
+            System.out.println("\nBem vindo ao Carrinho de Compras!\n");
+            System.out.print("1 - Adicionar item\n" +
+                    "2 - Remover item\n" +
+                    "3 - Cacular valor total dos itens\n" +
+                    "4 - Listar itens\n" +
+                    "0 - SAIR\n" +
+                    "Escolha: ");
+            escolha = sc.nextInt();
+            switch (escolha){
+                case 1:
+                    sc.nextLine();
+                    System.out.println("Digite o nome do item: ");
+                    String nomeItem = sc.nextLine();
+                    System.out.println(nomeItem);
+                    System.out.println("Digite o valor item: ");
+                    float valorItem = sc.nextFloat();
+                    System.out.println("Digite a quantidade do item: ");
+                    int qtdeItem = sc.nextInt();
+                    carrinhoDeCompras.adicionarItem(nomeItem,valorItem,qtdeItem);
+                    break;
+
+                case 2:
+                    String itemParaRemover;
+                    System.out.println("Digite o nome do item que deseja remover: ");
+                    sc.nextLine();
+                    carrinhoDeCompras.removerItem(itemParaRemover = sc.nextLine());
+                    break;
+
+                case 3:
+                    System.out.println("O valor total no carrinho de compras é R$ "+ String.format("%.2f",carrinhoDeCompras.calcularValorTotal()));
+                    break;
+
+                case 4:
+                    System.out.println("Carrinho de compras\n");
+                    carrinhoDeCompras.exibirItens();
                     break;
             }
         }while (escolha != 0);
