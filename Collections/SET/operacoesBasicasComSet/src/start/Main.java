@@ -1,6 +1,7 @@
 package start;
 
 import utilidade.ConjuntoConvidados;
+import utilidade.ConjuntoPalavrasUnicas;
 
 import java.util.Scanner;
 
@@ -12,11 +13,15 @@ public class Main {
 
         do{
             System.out.println("1 - Conjunto de Convidados" +
+                    "\n2 - Conjunto de palavras Únicas" +
                     "\n0 - Sair");
             escolha = sc.nextInt();
             switch (escolha){
                 case 1:
                     conjuntoConvidados();
+                    break;
+                case 2:
+                    conjuntoPalavrasUnicas();
                     break;
             }
         }while (escolha != 0);
@@ -52,6 +57,42 @@ public class Main {
                     break;
                 case 4:
                     conjuntoConvidados.exibirConvidados();
+                    break;
+                default:
+                    System.out.println("Opção inválida");
+                    break;
+            }
+        }while (escolha != 0);
+    }
+
+    private static void conjuntoPalavrasUnicas(){
+        ConjuntoPalavrasUnicas conjuntoPalavrasUnicas = new ConjuntoPalavrasUnicas();
+        int escolha;
+
+        do{
+            System.out.println("\n1 - Adicionar palavra" +
+                    "\n2 - Remover palavra" +
+                    "\n3 - Contar palavras" +
+                    "\n4 - Exibir palavras" +
+                    "\n0 - Sair");
+            escolha = sc.nextInt();
+
+            switch (escolha){
+                case 1:
+                    System.out.println("Digite a palavra: ");
+                    String palavra = sc.next();
+                    conjuntoPalavrasUnicas.adicionarPalavra(palavra);
+                    break;
+                case 2:
+                    System.out.println("Digite a palavra que deseja remover: ");
+                    String palavraRemove = sc.next();
+                    conjuntoPalavrasUnicas.removerPalavra(palavraRemove);
+                    break;
+                case 3:
+                    conjuntoPalavrasUnicas.contarPalavras();
+                    break;
+                case 4:
+                    conjuntoPalavrasUnicas.exibirPalavras();
                     break;
                 default:
                     System.out.println("Opção inválida");
