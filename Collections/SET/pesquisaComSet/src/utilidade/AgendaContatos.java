@@ -13,7 +13,7 @@ public class AgendaContatos {
     }
 
     public void adicionarContato(String nome, String telefone) {
-        this.contatoSet.add(new Contato(nome, telefone));
+        this.contatoSet.add(new Contato(nome.toLowerCase(), telefone));
     }
 
     public void exibirContatos() {
@@ -26,11 +26,14 @@ public class AgendaContatos {
         Set<Contato> contatosPorNome = new HashSet<>();
         if (!contatoSet.isEmpty()) {
             for (Contato c : contatoSet) {
-                if (c.getNome().startsWith(nome)) {
+                if (c.getNome().startsWith(nome.toLowerCase())) {
+                    // startsWith() é um método da classe String que verifica se a String
+                    // começa com o valor passado como argumento
                     contatosPorNome.add(c);
                 }
             }
             return contatosPorNome;
+
         } else {
             throw new RuntimeException("O conjunto está vazio!");
         }
@@ -38,9 +41,8 @@ public class AgendaContatos {
 
     public void atualizarNumeroContato(String nome, String novoTelefone){
         for (Contato contato : this.contatoSet) {
-            if (contato.getNome().equals(nome)) {
-                contatoSet.add(new Contato(nome, novoTelefone));
-                System.out.println("Contato atualizado.");
+            if (contato.getNome().equals(nome.toLowerCase())) {
+                contatoSet.add(new Contato(nome.toLowerCase(), novoTelefone));
                 return;
             }
         }
