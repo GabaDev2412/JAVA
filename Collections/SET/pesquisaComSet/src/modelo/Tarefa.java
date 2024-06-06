@@ -7,8 +7,8 @@ public class Tarefa {
     private boolean checkTarefa; // true = tarefa concluída, false = tarefa não concluída
 
     public Tarefa(String descricao) {
-        this.descricao = descricao;
-        this.checkTarefa = false;
+        this.descricao = descricao; // descrição da tarefa
+        this.checkTarefa = false; // tarefa não concluída
     }
 
     public String getDescricao() {

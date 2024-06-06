@@ -10,6 +10,5 @@ public class ListaTarefas {
 
     public ListaTarefas() {this.tarefaSet = new HashSet<>();}
 
-
 }
 
